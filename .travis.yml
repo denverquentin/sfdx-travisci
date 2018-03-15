@@ -26,6 +26,7 @@ before_script:
 # -s, --setdefaultusername        set the authenticated org as the default username that all commands run against
 - sfdx force:auth:jwt:grant -i $CONSUMERKEY -u $USERNAME -f assets/server.key -a DevHub -d
 
+script:
 # create a scratch org
 # -i, --clientid CLIENTID                          connected app consumer key
 # -f, --definitionfile DEFINITIONFILE              path to a scratch org definition file
@@ -39,8 +40,8 @@ before_script:
 # --json                                           format output as json
 # --loglevel LOGLEVEL                              logging level for this command invocation (error*,trace,debug,info,warn,fatal)
 - sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI -w 10 --json
-
-script:
+- sfdx force:alias:list --json
+- sfdx force:config:list --json
 - sfdx force:source:push -u orgCI
 - sfdx force:apex:test:run -c -r human
 - sleep 1m

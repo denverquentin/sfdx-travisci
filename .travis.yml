@@ -1,3 +1,4 @@
+# https://docs.travis-ci.com/user/customizing-the-build/
 sudo: true
 dist: trusty
 cache: false
@@ -40,6 +41,11 @@ script:
 # --json                                           format output as json
 # --loglevel LOGLEVEL                              logging level for this command invocation (error*,trace,debug,info,warn,fatal)
 - sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI -w 10 --json
+
+# line above is failing because of some other bug that started happening randomly a few days ago - seems specific to Travis + SFDX
+# https://salesforce.stackexchange.com/questions/210794/travis-ci-fails-to-create-a-scratch-org
+# https://success.salesforce.com/_ui/core/chatter/groups/GroupProfilePage?fId=0D53A00003PWv15SAD&g=0F93A000000HTp1SAG
+
 - sfdx force:alias:list --json
 - sfdx force:config:list --json
 - sfdx force:source:push -u orgCI

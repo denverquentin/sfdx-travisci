@@ -1,4 +1,4 @@
-# sfdx-travisci [![Build Status](https://travis-ci.org/forcedotcom/sfdx-travisci.svg?branch=master)](https://travis-ci.org/forcedotcom/sfdx-travisci)
+# sfdx-travisci [![Build Status](https://travis-ci.org/denverquentin/sfdx-travisci.svg?branch=master)](https://travis-ci.org/denverquentin/sfdx-travisci)
 
 For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
@@ -42,11 +42,3 @@ If any any of these assumptions aren't true, the following steps won't work.
 And you should be ready to go! Now when you commit and push a change, your change will kick off a Travis CI build.
 
 Enjoy!
-
-## Contributing to the Repository ###
-
-If you find any issues or opportunities for improving this respository, fix them!  Feel free to contribute to this project by [forking](http://help.github.com/fork-a-repo/) this repository and make changes to the content.  Once you've made your changes, share them back with the community by sending a pull request. Please see [How to send pull requests](http://help.github.com/send-pull-requests/) for more information about contributing to Github projects.
-
-## Reporting Issues ###
-
-If you find any issues with this demo that you can't fix, feel free to report them in the [issues](https://github.com/forcedotcom/sfdx-travisci/issues) section of this repository.

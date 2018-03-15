@@ -8,8 +8,7 @@ before_install:
 # TODO: can't get a server.key.enc to work - seems like a travis bug - https://github.com/travis-ci/travis-ci/issues/4746
 # commited the server.key to git for now as a work around - NOT SECURE FOR A REAL DEV ORG/CODE
 # https://trailhead.salesforce.com/modules/sfdx_travis_ci/units/sfdx_travis_ci_connected_app
-
-- openssl aes-256-cbc -K $encrypted_870902af7f35_key -iv $encrypted_870902af7f35_iv -in assets/server.key.enc -out assets/server.key -d
+#- openssl aes-256-cbc -K $encrypted_870902af7f35_key -iv $encrypted_870902af7f35_iv -in assets/server.key.enc -out assets/server.key -d
 - wget -qO- $URL | tar xJf -
 - ./sfdx/install
 - export PATH=./sfdx/$(pwd):$PATH

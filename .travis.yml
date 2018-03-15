@@ -22,7 +22,7 @@ before_script:
 
 script:
 - sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI
- - sfdx force:source:push -u orgCI
- - sfdx force:apex:test:run -r human
- - sleep 1m
- - sfdx force:org:delete -u orgCI -p
+- sfdx force:source:push -u orgCI
+- sfdx force:apex:test:run -r human
+- sleep 1m
+- sfdx force:org:delete -u orgCI -p

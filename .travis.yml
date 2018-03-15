@@ -9,8 +9,7 @@ before_install:
 # commited the server.key to git for now as a work around - NOT SECURE FOR A REAL DEV ORG/CODE
 # https://trailhead.salesforce.com/modules/sfdx_travis_ci/units/sfdx_travis_ci_connected_app
 
-#- openssl aes-256-cbc -K $encrypted_870902af7f35_key -iv $encrypted_870902af7f35_iv
-#  -in assets/server.key.enc -out assets/server.key -d
+- openssl aes-256-cbc -K $encrypted_870902af7f35_key -iv $encrypted_870902af7f35_iv -in assets/server.key.enc -out assets/server.key -d
 - wget -qO- $URL | tar xJf -
 - ./sfdx/install
 - export PATH=./sfdx/$(pwd):$PATH
@@ -26,9 +25,8 @@ before_script:
 # -a, --setalias SETALIAS         set an alias for the authenticated org
 # -d, --setdefaultdevhubusername  set the authenticated org as the default dev hub org for scratch org creation
 # -s, --setdefaultusername        set the authenticated org as the default username that all commands run against
-- sfdx force:auth:jwt:grant -i $CONSUMERKEY -u $USERNAME -f assets/server.key -a DevHub -d --loglevel info --json
+- sfdx force:auth:jwt:grant -i $CONSUMERKEY -u $USERNAME -f assets/server.key -a DevHub -d
 
-script:
 # create a scratch org
 # -i, --clientid CLIENTID                          connected app consumer key
 # -f, --definitionfile DEFINITIONFILE              path to a scratch org definition file
@@ -41,8 +39,9 @@ script:
 # -w, --wait WAIT                                  the streaming client socket timeout (in minutes) (default:6, min:2)
 # --json                                           format output as json
 # --loglevel LOGLEVEL                              logging level for this command invocation (error*,trace,debug,info,warn,fatal)
-- sfdx force:org:create -s -f config/project-scratch-def.json -w 10 -a orgCI
+- sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI --json
 
+script:
 - sfdx force:source:push -u orgCI
 - sfdx force:apex:test:run -c -r human
 - sleep 1m

@@ -38,7 +38,7 @@ before_script:
 # -w, --wait WAIT                                  the streaming client socket timeout (in minutes) (default:6, min:2)
 # --json                                           format output as json
 # --loglevel LOGLEVEL                              logging level for this command invocation (error*,trace,debug,info,warn,fatal)
-- sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI --json
+- sfdx force:org:create -s -f config/project-scratch-def.json -a orgCI -w 10 --json
 
 script:
 - sfdx force:source:push -u orgCI
